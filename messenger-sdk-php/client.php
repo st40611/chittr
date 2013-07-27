@@ -84,6 +84,25 @@ $seq = -1;
       foreach($arr as $item)
       {
         $userIds[] = $item['contact']['id'];
+        switch($item['contact']['presence']['presenceState'])
+        {
+          case -1: 
+            echo '<span class=\'offline_contact\'>'. $item['contact']['id'].'</span><br>';
+               
+            break;
+          case 0:
+            echo '<span class=\'online_contact\'>'. $item['contact']['id'].'</span><br>';
+
+            break;
+          case 2:
+            echo '<span class=\'busy_contact\'>'. $item['contact']['id'].'</span><br>';
+
+            break;
+          case 999:
+            echo '<span class=\'idle_contact\'>'. $item['contact']['id'].'</span><br>';
+
+            break;
+        }
         echo '<span class=\'contact\'>'. $item['contact']['id'].'</span><br>';
       }
     //  echo '<span class=\'contact\'>'.json_encode($userIds).'</span><br>';
