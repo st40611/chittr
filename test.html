@@ -1,13 +1,29 @@
 <html>
 <head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-function showHint(str)
+/*$(document).ready(function() 
 {
-if (str.length==0)
+    $.ajax(
+    {
+        post: "GET",
+        url: "word_day.php"
+    }).done(function() 
+    {
+        alert("done");
+    }).fail(function() 
+    {
+        alert("fail);
+    });
+
+});*/
+function showNames()
+{
+/*if (str.length==0)
   { 
-  document.getElementById("txtHint").innerHTML="";
+  document.getElementById("names").innerHTML="";
   return;
-  }
+  }*/
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
   xmlhttp=new XMLHttpRequest();
@@ -20,21 +36,19 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    document.getElementById("names").innerHTML=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET","gethint.php?q="+str,true);
+
+xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
 xmlhttp.send();
 }
 </script>
 </head>
-<body>
+<body onload="showNames()">
 
-<p><b>Start typing a name in the input field below:</b></p>
-<form> 
-First name: <input type="text" onkeyup="showHint(this.value)">
-</form>
-<p>Suggestions: <span id="txtHint"></span></p>
+<p>Suggestions: <span id="names"></span></p>
 
 </body>
 </html>
+
