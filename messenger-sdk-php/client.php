@@ -103,7 +103,6 @@ $seq = -1;
 
             break;
         }
-        echo '<span class=\'contact\'>'. $item['contact']['id'].'</span><br>';
       }
     //  echo '<span class=\'contact\'>'.json_encode($userIds).'</span><br>';
     }
