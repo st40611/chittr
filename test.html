@@ -7,42 +7,44 @@
 <script type="text/javascript" src="http://chittr.herokuapp.com/jquery.ui.chatbox.js"></script>
 <link rel="stylesheet" type="text/css" href="http://chittr.herokuapp.com/style.css">
 <script>
-/*$(document).ready(function() 
-{
-    $.ajax(
-    {
-        post: "GET",
-        url: "word_day.php"
-    }).done(function() 
-    {
-        alert("done");
-    }).fail(function() 
-    {
-        alert("fail);
-    });
+$(document).ready(function(){
+  showNames();
+          var box = null;
+          $(".contact").click(function(event, ui) {
+              /*if(box) {
+                  box.chatbox("option", "boxManager").toggleBox();
+                  box = null;
+              }
+              else {*/
+                if (box)
+                  box.chatbox("option", "boxManager").toggleBox();
 
-});*/
+                  box = $("#chat_div").chatbox({id: $(this).html() + "_chat", 
+                                                user:{key : "value"},
+                                                title : "Messenger",
+                                                width : 160,
+                                                messageSent : function(id, user, msg) {
+                                                  //Do stuff here
+                                                    $("#log").append("Me: " + msg + "<br/>");
+                                                    $("#chat_div").chatbox("option", "boxManager").addMsg("Me", msg);
+                                                }});
+              //}
+          });
+      });
+
 function showNames()
 {
-/*if (str.length==0)
-  { 
-  document.getElementById("names").innerHTML="";
-  return;
-  }*/
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
   }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
-xmlhttp.onreadystatechange=function()
+
+  xmlhttp.onreadystatechange=function()
   {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
     var arr = xmlhttp.responseText;
-    
     document.getElementById("contacts").innerHTML=xmlhttp.responseText;
     }
   }
@@ -53,7 +55,7 @@ xmlhttp.send();
 }
 </script>
 </head>
-<button onclick="showNames()">click me</button> 
+
 <div id="contacts"></div>
 
 </body>
