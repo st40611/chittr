@@ -87,21 +87,41 @@ while (true)
 					foreach ($val['contact'] as $item)
 					{
 						if ($engine->debug) echo $item['sender']. PHP_EOL;
-           /* if ($item['sender'] === 'synchrokun')
+            if ($item['sender'] === 'synchrokun')
             {
               echo "found it\n";
-              $engine->send_message($item['sender'], "you're gay");
-            }*/
+              //$engine->send_message($item['sender'], "testing");
+            //  $engine->send_message('synchrokun', "testing");
+            }
 					}
 					if ($engine->debug) echo '----------'. PHP_EOL;
+
+           $count = 1;
+          $contacts = array ();
+          foreach ($val['contact'] as $item)
+					{
+						echo $count . ") " . $item['sender']. PHP_EOL;
+            $contacts[$count] = $item['sender'];
+            $count++;
+					}
+          echo "Pick who to talk to (1 - $count) : \n";
+
+          $contactNum = trim(fgets(STDIN)); 
+          echo "Reply: "; 
+          $line = trim(fgets(STDIN)); 
+          $engine->send_message($contacts[$contactNum], json_encode($line));
+
 				}
 				
 				else if ($key == 'message') //incoming message
 				{
 					if ($engine->debug) echo '+ Incoming message from: "'. $val['sender']. '" on "'. date('H:i:s', $val['timeStamp']). '"'. PHP_EOL;
 					if ($engine->debug) echo '   '. $val['msg']. PHP_EOL;
-					if ($engine->debug) echo '----------'. PHP_EOL;
-					
+          if ($engine->debug) echo '----------'. PHP_EOL;
+          echo "Reply: ";
+          $line = trim(fgets(STDIN)); // reads one line from STDIN
+          $engine->send_message($val['sender'], json_encode($line));
+				/*	
 					//reply
 					$words = explode(' ', trim(strtolower($val['msg'])));
 					if ($words[0] == 'help')
@@ -153,7 +173,8 @@ while (true)
 					if ($engine->debug) echo '> Sending reply message '. PHP_EOL;
 					if ($engine->debug) echo '    '. $out. PHP_EOL;	
 					if ($engine->debug) echo '----------'. PHP_EOL;
-					$engine->send_message($val['sender'], json_encode($out));
+          $engine->send_message($val['sender'], json_encode($out));*/
+
 				}
 				
 				else if ($key == 'buddyAuthorize') //incoming contact request
@@ -166,6 +187,24 @@ while (true)
 						$engine->response_contact($val['sender'], true, 'Welcome to my list');
 					}
 				}
+
+        else {
+          $count = 1;
+          $contacts = array ();
+          foreach ($val['contact'] as $item)
+					{
+						echo $count . ") " . $item['sender']. PHP_EOL;
+            $contacts[$count] = $item['sender'];
+            $count++;
+					}
+          echo "Pick who to talk to (1 - $count) : \n";
+
+          $contactNum = trim(fgets(STDIN)); 
+          echo "Reply: "; 
+          $line = trim(fgets(STDIN)); 
+          $engine->send_message($contacts[$contactNum], json_encode($line));
+
+        }
 		}
 		}
 	}	
