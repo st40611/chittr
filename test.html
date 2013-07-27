@@ -36,18 +36,20 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-    document.getElementById("names").innerHTML=xmlhttp.responseText;
+    var arr = xmlhttp.responseText;
+    
+    document.getElementById("contacts").innerHTML=xmlhttp.responseText;
     }
   }
 
 xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
+//xmlhttp.open("GET","gethint.php",true);
 xmlhttp.send();
 }
 </script>
 </head>
-<body onload="showNames()">
-
-<p>Suggestions: <span id="names"></span></p>
+<button onclick="showNames()">click me</button> 
+<div id="contacts"></div>
 
 </body>
 </html>
