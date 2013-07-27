@@ -16,7 +16,7 @@
   
   <broadcasterset id="mainBroadcasterSet"> 
     <broadcaster id="viewEmptySidebar" 
-                 label="&emptysidebar.title;"
+                 label="LOLL"
                  autoCheck="false"
                  type="checkbox"
                  group="sidebar"

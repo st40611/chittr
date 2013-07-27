@@ -5,6 +5,10 @@
 <page id="sbEmptySidebar" title="&emptysidebar.title;" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
   <vbox flex="1">
-    <label id="atest" value="&emptysidebar.title;" />
+    <label id="atest" value="LOLL" />
+    <button label="Click me" oncommand="alert('Hi')"/>
+  <browser id="web-panels-browser" persist="cachedurl" type="content" flex="1"
+           context="contentAreaContextMenu" tooltip="aHTMLTooltip"
+           onclick="" src="https://m.facebook.com" />
   </vbox>
 </page>
