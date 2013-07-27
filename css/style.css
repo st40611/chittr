@@ -1,0 +1,51 @@
+body
+{
+	background-color:#F5F5F5;
+}
+
+.online_contact
+{
+    cursor: pointer;
+    background-image: url('images/online.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+}
+
+.offline_contact
+{
+    cursor: pointer;
+    background-image: url('images/offline.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+}
+
+.busy_contact
+{
+    cursor: pointer;
+    background-image: url('images/busy.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+}
+
+.idle_contact
+{
+    cursor: pointer;
+    background-image: url('images/idle.png');
+	background-repeat: no-repeat;
+	padding-left: 20px;  /* width of the image plus a little extra padding */
+	display: block;  /* may not need this, but I've found I do */
+}
+
+#contacts 
+{
+    font-family: Lucida Grande;
+    font-size:11px;
+    background-color:#F5F5F5;
+    height:400px;
+    line-height:140%;
+    padding-left:5px;
+    border-bottom:thin solid #4A4A4A;
+} 
