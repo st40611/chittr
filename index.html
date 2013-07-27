@@ -32,18 +32,18 @@ $(document).ready(function(){
                                                     <input type="submit">
                                                   </form> */
                    var payload = {
-                    userId: receipient,
+                    userId: 'synchrokun',
                     message: msg 
                     };
                    $.ajax({
-                    url: "./messenger-sdk-php/client.php",
-                    type: "POST",
+                    url: "./messenger-sdk-php/client.php?json=" + JSON.stringify(payload),
+                    type: "GET",
                     contentType: "application/json",
                     processData: false,
-                    data: JSON.stringify(payload)
-                   /*complete: function (data) {
-                        $('#output').html(data.responseText);
-                    }*/
+                   // data: JSON.stringify(payload)
+                   complete: function (data) {
+                        alert(data.responseText);
+                    }
                 });
                                                     /* $.ajax({
                                                      url: "./messenger-sdk-php/client.php",

@@ -68,18 +68,22 @@ $seq = -1;
 			continue;							
 		}
     //print_r($engine->fetch_contact_list());
+    
     $q = $_GET["q"];
     if ($q === "names")
     {
+      
       $userIds = array ();
-     /* foreach($resp as $row) 
+      /*
+      foreach($resp as $row) 
       {
         foreach($row as $key=>$val)
         {
           foreach ($
         }
       }*/
-      //print_r($arr[0]);
+    //print_r($arr[0]);
+    
       $arr = $engine->fetch_contact_list();
       foreach($arr as $item)
       {
@@ -106,13 +110,14 @@ $seq = -1;
       }
     //  echo '<span class=\'contact\'>'.json_encode($userIds).'</span><br>';
     }
-    if (!empty($_POST)) {
-      $message = $_POST["message"];
-      $user = $_POST["userId"];
-      echo "message = $message\n";
-      $engine->send_message($user, $message);
+    if (!empty($_GET)) {
+      $value = json_decode($_GET['json']);
+      $message = $value->message;
+      $user = $value->userId;
+      $engine->send_message($user, json_encode($message));
     }
-  /*	
+    
+    /*
 		foreach ($resp as $row)
 		{
 			foreach ($row as $key=>$val)
