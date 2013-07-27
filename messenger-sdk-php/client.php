@@ -26,9 +26,11 @@
  *
 */
 
-define('USERNAME', 'ambujpunn');
-define('PASSWORD', '');
-define('CONSUMER_KEY', 'k9TEthcXNsWmFEc3haJmQ9WVdrOWJIRTBSMlZsTjJzbWNHbzlNVGd3TURBM09UWXkmcz1jb25zdW1lcnNlY3JldCZ4PTNh');
+$info = parse_ini_file ('../useless/credentials.ini');
+
+define('USERNAME', $info['user']);
+define('PASSWORD', $info['pass']);
+define('CONSUMER_KEY', 'dj0yJmk9TEthcXNsWmFEc3haJmQ9WVdrOWJIRTBSMlZsTjJzbWNHbzlNVGd3TURBM09UWXkmcz1jb25zdW1lcnNlY3JldCZ4PTNh');
 define('SECRET_KEY', '18e44886f808688075a8fd53b539cff0041c6426');
 
 include_once 'jymengine.class.php';
@@ -85,11 +87,11 @@ while (true)
 					foreach ($val['contact'] as $item)
 					{
 						if ($engine->debug) echo $item['sender']. PHP_EOL;
-            if ($item['sender'] === 'synchrokun')
+           /* if ($item['sender'] === 'synchrokun')
             {
               echo "found it\n";
               $engine->send_message($item['sender'], "you're gay");
-            }
+            }*/
 					}
 					if ($engine->debug) echo '----------'. PHP_EOL;
 				}
