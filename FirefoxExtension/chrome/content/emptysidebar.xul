@@ -2,7 +2,7 @@
 <?xml-stylesheet href="chrome://global/skin/" type"text/css" ?>
 <!DOCTYPE page SYSTEM "chrome://emptysidebar/locale/emptysidebar.dtd">
 
-<page id="sbEmptySidebar" title="&emptysidebar.title;"
+<page id="sbEmptySidebar" title="&emptysidebar.title;" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
   <vbox flex="1">
   <browser id="web-panels-browser" persist="cachedurl" type="content" flex="1"

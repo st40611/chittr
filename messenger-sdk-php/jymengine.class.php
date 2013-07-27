@@ -228,7 +228,7 @@ class JYMEngine
 		//additional header
 		$header[] = 'Content-type: application/json; charset=utf-8';
 		$postdata = '{"message" : '. $message. '}';
-		
+
 		$rs = $this->curl($url, 'post', $header, $postdata);
 		
 		return true;
