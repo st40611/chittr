@@ -30,6 +30,7 @@ function getChatbox(userId) {
       }
 
 $(document).ready(function(){
+  showNames();
       
       $('#header').click(function(){
         if (headerToggle == 0) {
@@ -49,6 +50,20 @@ $(document).ready(function(){
       	//	$("#" + idList[idList.length - 2]).chatbox("option", "boxManager").clean();
       	//}
       	$("#" + idList[idList.length - 1]).chatbox("option", "boxManager").addMsg("Me", msg);
+         var payload = {
+                    userId: user,
+                    message: msg 
+                    };
+                   $.ajax({
+                    url: "./messenger-sdk-php/client.php?json=" + JSON.stringify(payload),
+                    type: "GET",
+                    contentType: "application/json",
+                    processData: false,
+                   // data: JSON.stringify(payload)
+                   complete: function (data) {
+                     getIncomeMessage();
+                    }
+                });
       	//$($(this).html() + '_chat').chatbox("option", "boxManager").addMsg(from, msg);
           /*for(var i = 0; i < idList.length; i ++) {
               chatboxManager.addBox(idList[i]);
@@ -64,15 +79,61 @@ $(document).ready(function(){
       
 
       });
+
+function showNames()
+{
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    var arr = xmlhttp.responseText;
+    document.getElementById("contacts").innerHTML=xmlhttp.responseText;
+    }
+  }
+
+xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
+//xmlhttp.open("GET","gethint.php",true);
+xmlhttp.send();
+
+}
+function getIncomingMessage()
+{
+  var arr ="";
+  console.log('trying to get messages');
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    arr = xmlhttp.responseText;
+    if (arr.length != 0) 
+    $("#chat_div").chatbox("option", "boxManager").addMsg("You", xmlhttp.responseText);
+    }
+  }
+
+xmlhttp.open("GET","./messenger-sdk-php/client.php?q=reply",true);
+//xmlhttp.open("GET","gethint.php",true);
+xmlhttp.send();
+if (arr.length == 0)
+  setTimeout(getIncomingMessage, 1500);
+
+}
     </script>
 
     <img id="header" src="images/header.png" style="padding-bottom:5px">
 
     <div id="contacts">
-        <span onclick=getChatbox("ambujpunn") class="online_contact">ambujpunn</span><br>
-        <span onclick=getChatbox("angelaxue918") class="busy_contact">angelaxue918</span><br>
-        <span onclick=getChatbox("it4kiran") class="idle_contact">it4kiran</span><br>
-        <span class="offline_contact">jonathanlook7</span><br>
     </div>
     <div id="chat_div"></div>
 </body>

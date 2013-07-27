@@ -14,16 +14,16 @@ $(document).ready(function(){
          
       });
 
-     function getChatbox() {
-        box = $("#chat_div").chatbox({id: $(this).html() + "_chat", 
-                                                user:{key : "value"},
-                                                title : $(this).html(),
+
+     function getChatbox(id) {
+        box = $("#chat_div").chatbox({id: id + "_chat", 
+                                                user: id,
+                                                title : id,
                                                 width : 160,
                                                 messageSent : function(id, user, msg) {
                                                   //Do stuff here
                                                     $("#log").append("Me: " + msg + "<br/>");
                                                     $("#chat_div").chatbox("option", "boxManager").addMsg("Me", msg);
-                                                    var receipient = $(this).html();
                                                    // xmlhttp=new XMLHttpRequest();
                                                   //  $.post("./messenger-sdk-php/client.php", { message: msg, userId: user } );
            // }
@@ -33,7 +33,7 @@ $(document).ready(function(){
                                                     <input type="submit">
                                                   </form> */
                    var payload = {
-                    userId: 'synchrokun',
+                    userId: user,
                     message: msg 
                     };
                    $.ajax({
@@ -43,6 +43,7 @@ $(document).ready(function(){
                     processData: false,
                    // data: JSON.stringify(payload)
                    complete: function (data) {
+                     getIncomeMessage();
                     }
                 });
                                                     /* $.ajax({
@@ -91,6 +92,34 @@ xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
 xmlhttp.send();
 
 }
+function getIncomingMessage()
+{
+  var arr ="";
+  console.log('trying to get messages');
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    arr = xmlhttp.responseText;
+    if (arr.length != 0) 
+    $("#chat_div").chatbox("option", "boxManager").addMsg("You", xmlhttp.responseText);
+    }
+  }
+
+xmlhttp.open("GET","./messenger-sdk-php/client.php?q=reply",true);
+//xmlhttp.open("GET","gethint.php",true);
+xmlhttp.send();
+if (arr.length == 0)
+  setTimeout(getIncomingMessage, 1500);
+
+}
+
 </script>
 </head>
 
