@@ -1,14 +1,15 @@
 <html>
 <head>
-<link rel="stylesheet" href="http://chittr.herokuapp.com/css/ui-lightness/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" />
-<script type="text/javascript" src="http://chittr.herokuapp.com/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="http://chittr.herokuapp.com/js/jquery-ui-1.8.2.custom.min.js"></script>
-<link type="text/css" href="http://chittr.herokuapp.com/jquery.ui.chatbox.css" rel="stylesheet" />
-<script type="text/javascript" src="http://chittr.herokuapp.com/jquery.ui.chatbox.js"></script>
-<link rel="stylesheet" type="text/css" href="http://chittr.herokuapp.com/style.css">
+<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.2.custom.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
+<link type="text/css" href="css/jquery.ui.chatbox.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.ui.chatbox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/chatboxManager.js"></script>
 <script>
 $(document).ready(function(){
-  showNames();
+  //showNames();
 
          
       });
@@ -68,34 +69,16 @@ $(document).ready(function(){
 
                                                 }});
 }      
-
-function showNames()
-{
-if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  }
-else {// code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-
-  xmlhttp.onreadystatechange=function()
-  {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    var arr = xmlhttp.responseText;
-    document.getElementById("contacts").innerHTML=xmlhttp.responseText;
-    }
-  }
-
-xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
-//xmlhttp.open("GET","gethint.php",true);
-xmlhttp.send();
-
-}
 </script>
 </head>
 
-<img src="http://chittr.herokuapp.com/header.png" style="padding-bottom:5px">
-<div id="contacts"></div>
+<img src="images/header.png" style="padding-bottom:5px">
+<div id="contacts">
+<span class="online_contact">ambujpunn</span><br>
+        <span class="busy_contact">angelaxue918</span><br>
+        <span class="idle_contact">it4kiran</span><br>
+        <span class="offline_contact">jonathanlook7</span><br>
+</div>
 <div id="chat_div"></div>
 
 </body>

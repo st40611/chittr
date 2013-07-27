@@ -7,6 +7,6 @@
   <vbox flex="1">
   <browser id="web-panels-browser" persist="cachedurl" type="content" flex="1"
            context="contentAreaContextMenu" tooltip="aHTMLTooltip"
-           onclick="" src="http://localhost:8888/test.html" />
+           onclick="" src="http://localhost:8888/test.php" />
   </vbox>
 </page>
