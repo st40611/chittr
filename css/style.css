@@ -49,3 +49,13 @@ body
     padding-left:5px;
     border-bottom:thin solid #4A4A4A;
 } 
+
+#footer {
+font-family: Lucida Grande;
+font-size:10px;
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
