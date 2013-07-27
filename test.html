@@ -8,14 +8,13 @@
 <link rel="stylesheet" type="text/css" href="http://chittr.herokuapp.com/style.css">
 <script>
 $(document).ready(function(){
-  showNames(function() {
+  showNames();
 
-          $("span").click(function(event, ui) {
-          var box = null;
-                if (box)
-                  box.chatbox("option", "boxManager").toggleBox();
+         
+      });
 
-                  box = $("#chat_div").chatbox({id: $(this).html() + "_chat", 
+     function getChatbox() {
+        box = $("#chat_div").chatbox({id: $(this).html() + "_chat", 
                                                 user:{key : "value"},
                                                 title : "Messenger",
                                                 width : 160,
@@ -23,13 +22,54 @@ $(document).ready(function(){
                                                   //Do stuff here
                                                     $("#log").append("Me: " + msg + "<br/>");
                                                     $("#chat_div").chatbox("option", "boxManager").addMsg("Me", msg);
-                                                    //var receipient = $(this).html();
-                                                }});
-              });
-          });
-      });
+                                                    var receipient = $(this).html();
+                                                   // xmlhttp=new XMLHttpRequest();
+                                                  //  $.post("./messenger-sdk-php/client.php", { message: msg, userId: user } );
+           // }
+                                                 /* <form action="./messenger-sdk-php/client.php" method="post">
+                                                    <input type="hidden" value=user name="userId">
+                                                    <input type="hidden" value=msg name="message">
+                                                    <input type="submit">
+                                                  </form> */
+                   var payload = {
+                    userId: receipient,
+                    message: msg 
+                    };
+                   $.ajax({
+                    url: "./messenger-sdk-php/client.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    processData: false,
+                    data: JSON.stringify(payload)
+                   /*complete: function (data) {
+                        $('#output').html(data.responseText);
+                    }*/
+                });
+                                                    /* $.ajax({
+                                                     url: "./messenger-sdk-php/client.php",
+                                                     type: "POST",
+                                                     data: {userId : user, message : msg}
+                                                     //dataType: "html"
+                                                    });*/
+                                           /*        request.done( {
+                                                      alert("success");
+                                                  });
+ 
+                                                request.fail( {
+  alert( "Request failed: "  );
+}); */
+                                                  //  xmlhttp.onreadystatechange=function()
+                                                   // {
+                                                      //  xmlhttp.open("POST","./messenger-sdk-php/client.php?m=" + msg+"u="+receipient ,true);
+                                                        //xmlhttp.open("GET","gethint.php",true);
+                                                      //  xmlhttp.send();
 
-function showNames(callback)
+                                                  //  }
+
+                                                }});
+}      
+
+function showNames()
 {
 if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -50,7 +90,6 @@ xmlhttp.open("GET","./messenger-sdk-php/client.php?q=names",true);
 //xmlhttp.open("GET","gethint.php",true);
 xmlhttp.send();
 
-callback();
 }
 </script>
 </head>

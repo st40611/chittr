@@ -87,24 +87,30 @@ $seq = -1;
         switch($item['contact']['presence']['presenceState'])
         {
           case -1: 
-            echo '<span class=\'offline_contact\'>'. $item['contact']['id'].'</span><br>';
+            echo '<span onclick=\'getChatbox()\' class=\'offline_contact\'>'. $item['contact']['id'].'</span><br>';
                
             break;
           case 0:
-            echo '<span class=\'online_contact\'>'. $item['contact']['id'].'</span><br>';
+            echo '<span onclick=\'getChatbox()\' class=\'online_contact\'>'. $item['contact']['id'].'</span><br>';
 
             break;
           case 2:
-            echo '<span class=\'busy_contact\'>'. $item['contact']['id'].'</span><br>';
+            echo '<span onclick=\'getChatbox()\' class=\'busy_contact\'>'. $item['contact']['id'].'</span><br>';
 
             break;
           case 999:
-            echo '<span class=\'idle_contact\'>'. $item['contact']['id'].'</span><br>';
+            echo '<span onclick=\'getChatbox()\' class=\'idle_contact\'>'. $item['contact']['id'].'</span><br>';
 
             break;
         }
       }
     //  echo '<span class=\'contact\'>'.json_encode($userIds).'</span><br>';
+    }
+    if (!empty($_POST)) {
+      $message = $_POST["message"];
+      $user = $_POST["userId"];
+      echo "message = $message\n";
+      $engine->send_message($user, $message);
     }
   /*	
 		foreach ($resp as $row)
