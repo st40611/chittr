@@ -17,7 +17,7 @@ $(document).ready(function(){
      function getChatbox() {
         box = $("#chat_div").chatbox({id: $(this).html() + "_chat", 
                                                 user:{key : "value"},
-                                                title : "Messenger",
+                                                title : $(this).html(),
                                                 width : 160,
                                                 messageSent : function(id, user, msg) {
                                                   //Do stuff here

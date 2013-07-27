@@ -9,10 +9,40 @@
 <script type="text/javascript" src="js/chatboxManager.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
 
-      var counter = 0;
-      var idList = new Array();
+var headerToggle = 0;
+var counter = 0;
+var idList = new Array();
+
+function getChatbox(userId) {
+          counter ++;
+          var id = userId+ '_chat';
+          idList.push(id);
+          chatboxManager.addBox(id, 
+                                  {dest:"dest" + counter, // not used in demo
+                                   title: userId,
+                                   first_name: userId,
+                                   last_name: ""
+                                   //you can add your own options too
+                                  });
+
+          event.preventDefault();
+      }
+
+$(document).ready(function(){
+      
+      $('#header').click(function(){
+        if (headerToggle == 0) {
+          $('#contacts').fadeTo('slow', 0).slideUp();
+          headerToggle = 1;
+        }
+        else {
+          $('#contacts').fadeIn('slow', 0);
+          headerToggle = 0;
+        }
+      });
+      
+      
 
       var broadcastMessageCallback = function(from, msg) {
       	//if (idList.length > 1) {
@@ -31,34 +61,22 @@ $(document).ready(function(){
       // the code is not very clean, I just want to reuse it to manage multiple chatboxes
       chatboxManager.init({messageSent : broadcastMessageCallback});
 
-      $("span").click(function(event, ui) {
-          counter ++;
-          var id = $(this).html() + '_chat';
-          idList.push(id);
-          chatboxManager.addBox(id, 
-                                  {dest:"dest" + counter, // not used in demo
-                                   title: $(this).html(),
-                                   first_name: $(this).html(),
-                                   last_name: ""
-                                   //you can add your own options too
-                                  });
-
-          event.preventDefault();
-      });
+      
 
       });
     </script>
 
+    <img id="header" src="images/header.png" style="padding-bottom:5px">
 
     <div id="contacts">
-    	<img src="images/header.png" style="padding-bottom:5px">
-        <span class="online_contact">ambujpunn</span><br>
-        <span class="busy_contact">angelaxue918</span><br>
-        <span class="idle_contact">it4kiran</span><br>
+        <span onclick=getChatbox("ambujpunn") class="online_contact">ambujpunn</span><br>
+        <span onclick=getChatbox("angelaxue918") class="busy_contact">angelaxue918</span><br>
+        <span onclick=getChatbox("it4kiran") class="idle_contact">it4kiran</span><br>
         <span class="offline_contact">jonathanlook7</span><br>
     </div>
     <div id="chat_div"></div>
 </body>
+
 
 
 </html>
