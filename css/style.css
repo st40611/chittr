@@ -6,7 +6,7 @@ body
 .online_contact
 {
     cursor: pointer;
-    background-image: url('images/online.png');
+    background-image: url('../images/online.png');
 	background-repeat: no-repeat;
 	padding-left: 20px;  /* width of the image plus a little extra padding */
 	display: block;  /* may not need this, but I've found I do */
@@ -15,7 +15,7 @@ body
 .offline_contact
 {
     cursor: pointer;
-    background-image: url('images/offline.png');
+    background-image: url('../images/offline.png');
 	background-repeat: no-repeat;
 	padding-left: 20px;  /* width of the image plus a little extra padding */
 	display: block;  /* may not need this, but I've found I do */
@@ -24,7 +24,7 @@ body
 .busy_contact
 {
     cursor: pointer;
-    background-image: url('images/busy.png');
+    background-image: url('../images/busy.png');
 	background-repeat: no-repeat;
 	padding-left: 20px;  /* width of the image plus a little extra padding */
 	display: block;  /* may not need this, but I've found I do */
@@ -33,7 +33,7 @@ body
 .idle_contact
 {
     cursor: pointer;
-    background-image: url('images/idle.png');
+    background-image: url('../images/idle.png');
 	background-repeat: no-repeat;
 	padding-left: 20px;  /* width of the image plus a little extra padding */
 	display: block;  /* may not need this, but I've found I do */
