@@ -117,7 +117,7 @@ $seq = -1;
       $engine->send_message($user, json_encode($message));
     }
     
-    /*
+    
 		foreach ($resp as $row)
 		{
 			foreach ($row as $key=>$val)
@@ -140,8 +140,21 @@ $seq = -1;
 				}
 				
 				else if ($key == 'message') //incoming message
-				{
-					if ($engine->debug) echo '+ Incoming message from: "'. $val['sender']. '" on "'. date('H:i:s', $val['timeStamp']). '"'. PHP_EOL;
+        {
+           $q = $_GET["q"];
+           print_r($_GET);
+            if ($q === "reply")
+            {
+              $info = array ();
+              $info['sender'] = $val['sender'];
+              $info['msg'] = $val['msg'];
+              print_r($info);
+            }
+
+          
+
+        }
+				/*	if ($engine->debug) echo '+ Incoming message from: "'. $val['sender']. '" on "'. date('H:i:s', $val['timeStamp']). '"'. PHP_EOL;
 					if ($engine->debug) echo '   '. $val['msg']. PHP_EOL;
 					if ($engine->debug) echo '----------'. PHP_EOL;
 					
@@ -208,9 +221,9 @@ $seq = -1;
 						$engine->delete_contact($val['sender']);
 						$engine->response_contact($val['sender'], true, 'Welcome to my list');
 					}
-				}
-		}
-    }*/
+        }*/
+    }
+    }
   }	
 //}
 
