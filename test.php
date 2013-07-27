@@ -3,10 +3,10 @@
 <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.2.custom.css" type="text/css"/>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script>
-<link type="text/css" href="jquery.ui.chatbox.css" rel="stylesheet" />
-<script type="text/javascript" src="jquery.ui.chatbox.js"></script>
-<script type="text/javascript" src="chatboxManager.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link type="text/css" href="css/jquery.ui.chatbox.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.ui.chatbox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/chatboxManager.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 
     <div id="contacts">
-    	<img src="http://chittr.herokuapp.com/header.png" style="padding-bottom:5px">
+    	<img src="images/header.png" style="padding-bottom:5px">
         <span class="online_contact">ambujpunn</span><br>
         <span class="busy_contact">angelaxue918</span><br>
         <span class="idle_contact">it4kiran</span><br>
